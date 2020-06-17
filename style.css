@@ -1,0 +1,586 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Kosugi+Maru&family=Noto+Sans+TC:wght@700&display=swap");
+* {
+  margin: 0px;
+  padding: 0px 0px;
+  box-sizing: border-box;
+}
+/*=============================================
+=                  NAVBAR                      =
+=============================================*/
+/* .top {
+  display: flex;
+  position: fixed;
+  z-index: 1000;
+} */
+.top {
+  display: flex;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  z-index: 1;
+}
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 15px;
+  width: 100%;
+  height: 50px;
+  font-family: "Balsamiq Sans", cursive;
+  background-color: #2d3d57;
+  position: fixed;
+  top: 0;
+  z-index: 1;
+}
+.navbar-brand:hover {
+  color: #f5c94f;
+  text-decoration: none;
+  transition: all 0.4s ease;
+}
+.navbar a {
+  color: rgb(230, 230, 230);
+  letter-spacing: 5px;
+  font-size: 20px;
+  /* text-align: left; */
+  text-decoration: none;
+}
+
+.navbar-list a {
+  margin-right: 20px;
+  letter-spacing: 3px;
+  font-size: 14px;
+  text-decoration: none;
+}
+.navbar-list :hover {
+  color: #f5c94f;
+  text-decoration: none;
+  transition: all 0.4s ease;
+}
+.navbar-list a:last-child {
+  margin-right: 0;
+}
+/* 手機版的導覽按鈕 */
+.navbar-toggler {
+  display: none;
+}
+
+/* 手機版 <= 600px */
+@media (max-width: 600px) {
+  .navbar-list {
+    position: fixed;
+    right: 0px;
+    /* 把它藏到螢幕右側-200的位置 */
+    top: 50px;
+    width: 200px;
+    height: 50vh;
+    /* vh是視窗的高度 100就會跟視窗高度一模一樣高 */
+    background: #2d3d57;
+    transition: all 0.5s ease-out;
+  }
+  /* 選同時擁有.navbar-list與.active的元素 */
+  .navbar-list.active {
+    right: -200px;
+  }
+
+  .navbar-list a {
+    display: block;
+    padding: 10px 20px;
+  }
+
+  .navbar-toggler {
+    border: none;
+    display: block;
+    width: 40px;
+    height: 40px;
+    background: transparent;
+  }
+
+  .line {
+    width: 25px;
+    height: 2px;
+    background: white;
+    position: relative;
+    /* transform: rotateZ(45deg); */
+  }
+
+  .line.rotate {
+    transform: rotateZ(45deg);
+  }
+
+  .line.rotate:before {
+    top: 0;
+  }
+
+  .line.rotate:after {
+    transform: rotateZ(270deg);
+    bottom: 0px;
+  }
+
+  .line,
+  .line:before,
+  .line:after {
+    transition: all 0.3s ease-out;
+  }
+
+  .line:before,
+  .line:after {
+    content: "";
+    width: 25px;
+    height: 2px;
+    background: white;
+    display: block;
+    position: absolute;
+    /* top: -5px; */
+  }
+
+  .line:before {
+    top: -8px;
+  }
+  .line:after {
+    bottom: -8px;
+  }
+}
+/*=============================================
+=                  HERO                       =
+=============================================*/
+.hero {
+  display: flex;
+  width: 100%;
+  height: 550px;
+  background: url(images/heropic.jpg) center no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  /* 讓背景圖片固定住 */
+  background-position: center center;
+  font-family: "Roboto", sans-serif;
+  color: rgb(240, 239, 239);
+  text-shadow: rgba(133, 133, 133, 0.671);
+}
+.container {
+  width: 100%;
+  text-align: center;
+  align-self: center;
+}
+
+.headline {
+  font-size: 55px;
+  letter-spacing: 3px;
+  margin-right: -3px;
+  opacity: 0;
+  animation: fadeup 0.5s forwards;
+}
+.subheadline {
+  font-size: 18px;
+  margin-top: 10px;
+  letter-spacing: 2px;
+  margin-right: -2px;
+  font-weight: lighter;
+  animation: scale 0.6s forwards;
+  opacity: 0;
+  animation-delay: 0.2s;
+}
+.button {
+  display: inline-block;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  margin-right: -3px;
+  text-decoration: none;
+}
+.cta-btn {
+  font-size: 14px;
+  background-color: #fabf1c;
+  border-radius: 100px;
+  padding: 10px 12px;
+  font-family: "Roboto", sans-serif;
+  color: #2d3d57;
+  font-weight: 600;
+  margin-top: 40px;
+  transition: all 0.4s ease;
+  opacity: 0;
+  animation: fadedown 0.5s forwards;
+  animation-delay: 0.6s;
+}
+.cta-btn:hover {
+  background-color: #2d3d57;
+  text-decoration: none;
+  color: #fabf1c;
+}
+.about {
+  display: flex;
+  background-color: #fabf1c;
+  width: 100%;
+  height: 600px;
+  font-family: "Roboto", sans-serif;
+  text-align: center;
+}
+.about-container {
+  width: 100%;
+}
+
+.about-container h1 {
+  font-size: 60px;
+  font-weight: 550;
+  margin-top: 40px;
+  letter-spacing: 3px;
+  margin-right: -3px;
+  /* text-shadow: 0px 3px 0px rgba(255, 255, 255, 0.8); */
+  text-shadow: 0 6px 0 rgba(0, 0, 0, 0.2);
+  color: #2d3d57;
+}
+.about-container h2 {
+  color: #fff;
+  font-size: 30px;
+  margin-top: -10px;
+}
+.about-container p {
+  font-family: "Noto Sans TC", sans-serif;
+  color: #2d3d57;
+  margin-top: 20px;
+  font-size: 20px;
+  margin-right: 20px;
+  margin-left: 20px;
+}
+
+.row {
+  /* 讓此元素的第一層的內部元素預設做橫向排列 */
+  display: flex;
+  /* 如果內部元素放不下，就保持寬度並換行 */
+  flex-wrap: wrap;
+  margin-top: 40px;
+}
+
+.col {
+  /* 使元素的寬度是上層元素(.row)的1/3 */
+  width: calc(100% / 2);
+  /* 以下的選擇器只有在視窗的寬度 <=600px */
+}
+.row h3 {
+  color: #fff;
+  margin-top: 6px;
+  letter-spacing: 3px;
+  margin-right: -3px;
+}
+@media (max-width: 770px) {
+  .about {
+    height: 600px;
+  }
+  .about-container h1 {
+    margin-top: 15px;
+  }
+  .about-container p {
+    font-size: 16px;
+  }
+  .about-container h2 {
+    font-size: 25px;
+    margin-top: -15px;
+  }
+  .row {
+    display: flex;
+  }
+
+  .first {
+    margin-top: -30px;
+    width: 150px;
+    height: 150px;
+  }
+  .second {
+    margin-top: 5px;
+    width: 150px;
+    height: 150px;
+  }
+  .f h3 {
+    margin-top: -10px;
+    letter-spacing: 3px;
+    margin-right: -3px;
+    font-size: 20px;
+  }
+  .s h3 {
+    margin-top: 3px;
+    letter-spacing: 3px;
+    margin-right: -3px;
+    font-size: 20px;
+  }
+}
+
+@keyframes fadeup {
+  0% {
+    transform: translateY(3rem);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes scale {
+  0% {
+    transform: scale(1.5);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+@keyframes fadedown {
+  0% {
+    transform: translateY(-0.5rem);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+/*=============================================
+=                  skill                       =
+=============================================*/
+
+.skill {
+  display: flex;
+  background-color: #2d3d57;
+  width: 100%;
+  height: 600px;
+  font-family: "Roboto", sans-serif;
+  text-align: center;
+}
+.skill-container {
+  width: 100%;
+}
+
+.skill-container h1 {
+  font-size: 60px;
+  font-weight: 550;
+  margin-top: 40px;
+  letter-spacing: 3px;
+  margin-right: -3px;
+  /* text-shadow: 0px 3px 0px rgba(255, 255, 255, 0.8); */
+  text-shadow: 0 6px 0 rgba(0, 0, 0, 0.2);
+  color: #fabf1c;
+}
+.skill-container h2 {
+  color: #fff;
+  font-size: 30px;
+  margin-top: -10px;
+}
+.skill-one {
+  padding: 0px 0px;
+}
+/*=============================================
+=                  project                    =
+=============================================*/
+.project {
+  display: flex;
+  background-color: #fabf1c;
+  width: 100%;
+  height: 150px;
+  font-family: "Roboto", sans-serif;
+  text-align: center;
+}
+.project-container {
+  width: 100%;
+}
+
+.project-container h1 {
+  font-size: 60px;
+  font-weight: 550;
+  margin-top: 40px;
+  letter-spacing: 2px;
+  margin-right: -2px;
+  /* text-shadow: 0px 3px 0px rgba(255, 255, 255, 0.8); */
+  text-shadow: 0 5px 0 rgba(0, 0, 0, 0.2);
+  color: #2d3d57;
+}
+.project-container h2 {
+  color: #fff;
+  font-size: 30px;
+  margin-top: -10px;
+}
+
+.project-1 {
+  display: flex;
+  background-color: #fabf1c;
+  width: 100%;
+  height: 530px;
+  font-family: "Noto Sans TC", sans-serif;
+  position: relative;
+}
+.pic {
+  position: absolute;
+  top: 40px;
+  left: 80px;
+}
+.pic-2 {
+  position: absolute;
+  bottom: 30px;
+  left: 330px;
+}
+
+.book {
+  position: absolute;
+  top: 0px;
+  right: 60px;
+}
+.book h3 {
+  font-size: 32px;
+  font-weight: 400;
+  margin-top: 60px;
+  margin-left: -10px;
+  letter-spacing: 2px;
+  margin-right: -2px;
+  color: #2d3d57;
+}
+.bookname h5 {
+  font-size: 18px;
+  font-weight: lighter;
+  margin-top: 30px;
+  margin-left: 3px;
+  letter-spacing: 3px;
+  margin-right: -3px;
+  color: #fff;
+}
+.bookname p {
+  margin-left: 30px;
+  margin-top: 20px;
+  font-size: 15px;
+  color: #233146;
+}
+
+.idea {
+  font-size: 18px;
+  margin-top: 40px;
+  margin-left: 3px;
+  letter-spacing: 3px;
+  margin-right: -3px;
+  color: #fff;
+}
+.idea-1 {
+  margin-left: 30px;
+  margin-top: 15px;
+  font-size: 15px;
+  color: #233146;
+}
+/* project-2 */
+.project-2 {
+  display: flex;
+  background-color: #2d3d57;
+  width: 100%;
+  height: 530px;
+  font-family: "Noto Sans TC", sans-serif;
+  position: relative;
+}
+.picc {
+  position: absolute;
+  top: 50px;
+  right: 150px;
+}
+.picc-2 {
+  position: absolute;
+  bottom: 25px;
+  right: 70px;
+}
+
+.cloth {
+  position: absolute;
+  top: 0px;
+  left: 80px;
+}
+.clothname h3 {
+  font-size: 32px;
+  font-weight: 400;
+  margin-top: 60px;
+  margin-left: 10px;
+  letter-spacing: 2px;
+  margin-right: -2px;
+  color: #fabf1c;
+}
+.clothname h5 {
+  font-size: 18px;
+  font-weight: lighter;
+  margin-top: 50px;
+  margin-left: 20px;
+  letter-spacing: 3px;
+  margin-right: -3px;
+  color: #fff;
+}
+.clothname p {
+  margin-left: 50px;
+  margin-top: 20px;
+  font-size: 15px;
+  color: #f5c94f;
+}
+
+.idea2 {
+  font-size: 18px;
+  margin-top: 80px;
+  margin-left: 20px;
+  letter-spacing: 3px;
+  margin-right: -3px;
+  color: #fff;
+}
+.idea-2 {
+  margin-left: 50px;
+  margin-top: 15px;
+  font-size: 15px;
+  color: #f5c94f;
+}
+/*=============================================
+=                  footer                      =
+=============================================*/
+footer {
+  padding: 20px 0;
+  background-color: #fabf1c;
+  position: relative;
+}
+.back-to-top {
+  width: 90px;
+  height: 90px;
+  background-color: #fabf1c;
+  top: -30px;
+  left: 50%;
+  position: absolute;
+  transform: translateX(-50%);
+  border-radius: 50%;
+}
+.back-to-top i {
+  display: block;
+  position: absolute;
+  right: 3px;
+  top: -23px;
+  color: #233146;
+  font-size: 25px;
+  padding: 2rem;
+  animation: up 2s infinite;
+}
+@keyframes up {
+  0% {
+    opacity: 0;
+    transform: translateY(1rem);
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(-0.5rem);
+  }
+}
+button {
+  width: 0px;
+  height: 0px;
+  border: none;
+  background-color: #2d3d57;
+  outline: none;
+}
+.s {
+  text-align: center;
+}
+.c {
+  text-align: center;
+}
+.icons {
+  display: flex;
+}
+.icons li {
+  display: flex;
+  text-decoration: none;
+}
